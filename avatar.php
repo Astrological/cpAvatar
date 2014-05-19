@@ -23,6 +23,7 @@ class penguinAvatar{
   
   public function createAvatar(){
     /*
+      Removed this method
       $this->avatarArr[0] - Color
       $this->avatarArr[1] - Head
       $this->avatarArr[2] - Face
