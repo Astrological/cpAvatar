@@ -10,7 +10,6 @@
 class penguinAvatar{
   private $avatarArr = array();
   private $avatarSize = null;
-  private $avatarMain = null;
   
   public function __construct($avatarArr, $avatarSize){
     // Set the avatar array
@@ -35,19 +34,19 @@ class penguinAvatar{
       $this->avatarArr[8] - Background
     */
     
-    imagealphablending($this->avatarMain, false);
-    imagesavealpha($this->avatarMain, true);
-    
     if(!empty($this->avatarArr[8])){
-      $this->avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[8] . '.png');
+      $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[8] . '.png');
       
       $avatarMainColor = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[0] . '.png');
       
-      imagecopy($this->avatarMain, $avatarMainColor, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+      imagecopy($avatarMain, $avatarMainColor, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
     }
     else{
-      $this->avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[0] . '.png');
+      $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[0] . '.png');
     }
+    
+    imagealphablending($avatarMain, true);
+    imagesavealpha($avatarMain, true);
     
     $avatarMainHead = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[1] . '.png');
     $avatarMainFace = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[2] . '.png');
@@ -57,17 +56,17 @@ class penguinAvatar{
     $avatarMainFeet = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[6] . '.png');
     $avatarMainPin = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[7] . '.png');
     
-    imagecopy($this->avatarMain, $avatarMainHead, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainFace, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainNeck, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainBody, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainHand, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainFeet, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
-    imagecopy($this->avatarMain, $avatarMainPin, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainHead, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainFace, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainNeck, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainBody, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainHand, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainFeet, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+    imagecopy($avatarMain, $avatarMainPin, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
     
     header('Content-Type: image/png');
     
-    imagepng($this->avatarMain);
+    imagepng($avatarMain);
   }
 }
 
