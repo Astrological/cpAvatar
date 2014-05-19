@@ -7,6 +7,8 @@
   
 */
 
+header('Cache-Control: max-age=31556926');
+
 class penguinAvatar{
   private $avatarArr = array();
   private $avatarSize = null;
