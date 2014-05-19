@@ -24,19 +24,6 @@ class penguinAvatar{
   }
   
   public function createAvatar(){
-    /*
-      Removed this method
-      $this->avatarArr[0] - Color
-      $this->avatarArr[1] - Head
-      $this->avatarArr[2] - Face
-      $this->avatarArr[3] - Neck
-      $this->avatarArr[4] - Body
-      $this->avatarArr[5] - Hand
-      $this->avatarArr[6] - Feet
-      $this->avatarArr[7] - Pin
-      $this->avatarArr[8] - Background
-    */
-    
     $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $this->avatarArr[0] . '.png');
     
     imagealphablending($avatarMain, true);
