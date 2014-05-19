@@ -40,9 +40,11 @@ class penguinAvatar{
     imagesavealpha($avatarMain, true);
     
     foreach($this->avatarArr as $avatarItem){
-      $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $avatarItem . '.png');
-      
-      imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+      if($avatarItem !== $this->avatarItem[0]){
+        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $avatarItem . '.png');
+        
+        imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
+      }
     }
     
     header('Content-Type: image/png');
