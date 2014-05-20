@@ -30,7 +30,7 @@ class penguinAvatar{
     imagesavealpha($avatarMain, true);
     
     foreach($this->avatarArr as $avatarItem){
-      if($avatarItem !== $this->avatarItem[0]){
+      if($avatarItem !== $this->avatarArr[0]){
         $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $this->avatarSize . '/' . $avatarItem . '.png');
         
         imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $this->avatarSize, $this->avatarSize);
