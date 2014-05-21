@@ -29,7 +29,6 @@ class penguinAvatar{
   private function createAvatar(){
     $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . self::$avatarSize . '/' . self::$avatarArr[0] . '.png');
     
-    imagealphablending($avatarMain, true);
     imagesavealpha($avatarMain, true);
     
     foreach(self::$avatarArr as $avatarItem){
