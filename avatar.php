@@ -15,7 +15,7 @@ header('Cache-Control: max-age=31556926');
 class penguinAvatar{
   // More will be added soon
   
-  private function createAvatar(array $avatarArr = [], $avatarSize){
+  public function createAvatar(array $avatarArr = [], $avatarSize){
     $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
     
     imagesavealpha($avatarMain, true);
