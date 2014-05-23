@@ -20,9 +20,9 @@ class penguinAvatar{
     
     imagesavealpha($avatarMain, true);
     
-    for($i = 0; $i < count($avatarArr); $i++){
-      if($avatarArr[$i] !== $avatarArr[0]){
-        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[$i] . '.png');
+    foreach($avatarArr as $avatarItem){
+      if($avatarItem !== $avatarArr[0]){
+        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
         
         imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
       }
