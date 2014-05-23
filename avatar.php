@@ -36,7 +36,7 @@ class penguinAvatar{
 $avatarArr = explode('|', $_GET['avatarInfo']);
 $avatarSize = $_GET['avatarSize'];
 
-// Call the penguinAvatar class & Create the avatar image
+// Define the penguinAvatar class & Create the avatar image
 $penguinAvatar = new penguinAvatar();
 $penguinAvatar::createAvatar($avatarArr, $avatarSize);
 
