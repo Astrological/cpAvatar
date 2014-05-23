@@ -15,7 +15,7 @@ header('Cache-Control: public');
 class penguinAvatar{
   // More will be added soon
   
-  public function createAvatar(array $avatarArr = [], $avatarSize){
+  public function createAvatar(array $avatarArr = [], $avatarSize = null){
     $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
     
     foreach($avatarArr as $avatarItem){
