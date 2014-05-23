@@ -20,15 +20,16 @@ class penguinAvatar{
     
     imagesavealpha($avatarMain, true);
     
-    foreach($avatarArr as $avatarItem){
-      if($avatarItem !== $avatarArr[0]){
-        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
+    for($i = 0; $i < count($avatarArr); $i++){
+      if($avatarArr[$i] !== $avatarArr[0]){
+        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[$i] . '.png');
         
         imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
       }
     }
     
     imagepng($avatarMain);
+    imagedestroy($avatarMain);
   }
 }
 
@@ -38,6 +39,6 @@ $avatarSize = $_GET['avatarSize'];
 
 // Call the penguinAvatar class & Create the avatar image
 $penguinAvatar = new penguinAvatar();
-$penguinAvatar->createAvatar($avatarArr, $avatarSize);
+$penguinAvatar::createAvatar($avatarArr, $avatarSize);
 
 ?>
