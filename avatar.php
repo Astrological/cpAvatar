@@ -10,7 +10,7 @@
 header('Content-Type: image/png');
 
 // Cache the image
-header('Cache-Control: max-age=31556926');
+header('Cache-Control: public');
 
 class penguinAvatar{
   // More will be added soon
