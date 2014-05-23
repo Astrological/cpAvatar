@@ -18,8 +18,6 @@ class penguinAvatar{
   public function createAvatar(array $avatarArr = [], $avatarSize){
     $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
     
-    imagesavealpha($avatarMain, true);
-    
     foreach($avatarArr as $avatarItem){
       if($avatarItem !== $avatarArr[0]){
         $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
@@ -28,6 +26,7 @@ class penguinAvatar{
       }
     }
     
+    imagesavealpha($avatarMain, true);
     imagepng($avatarMain);
     imagedestroy($avatarMain);
   }
