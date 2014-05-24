@@ -18,13 +18,13 @@ class penguinAvatar{
   public function createAvatar(array $avatarArr = [], $avatarSize = null){
     $avatarMainHeaders = get_headers('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
     
-    if($avatarMainHeaders[0] !== 'HTTP/1.0 404 Not Found'){
+    if($avatarMainHeaders[0] == 'HTTP/1.0 200 OK'){
       $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
       
       foreach($avatarArr as $avatarItem){
         $avatarItemHeaders = get_headers('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
         
-        if($avatarItemHeaders[0] !== 'HTTP/1.0 404 Not Found'){
+        if($avatarItemHeaders[0] == 'HTTP/1.0 200 OK'){
           if($avatarItem !== $avatarArr[0]){
             $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
             
