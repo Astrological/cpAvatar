@@ -16,23 +16,27 @@ class penguinAvatar{
   // More will be added soon
   
   public function createAvatar(array $avatarArr = [], $avatarSize = null){
-    $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
+    $avatarMainHeaders = get_headers('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
     
-    foreach($avatarArr as $avatarItem){
-      if($avatarItem !== $avatarArr[0]){
+    if($avatarMainHeaders !== 'HTTP/1.0 404 Not Found'){
+      $avatarMain = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarArr[0] . '.png');
+      
+      foreach($avatarArr as $avatarItem){
         $avatarItemHeaders = get_headers('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
         
         if($avatarItemHeaders !== 'HTTP/1.0 404 Not Found'){
-          $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
-          
-          imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
+          if($avatarItem !== $avatarArr[0]){
+            $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
+            
+            imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
+          }
         }
       }
+      
+      imagesavealpha($avatarMain, true);
+      imagepng($avatarMain);
+      imagedestroy($avatarMain);
     }
-    
-    imagesavealpha($avatarMain, true);
-    imagepng($avatarMain);
-    imagedestroy($avatarMain);
   }
 }
 
