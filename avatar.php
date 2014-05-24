@@ -20,9 +20,13 @@ class penguinAvatar{
     
     foreach($avatarArr as $avatarItem){
       if($avatarItem !== $avatarArr[0]){
-        $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
+        $avatarItemHeaders = get_headers('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
         
-        imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
+        if($avatarItemHeaders !== 'HTTP/1.0 404 Not Found'){
+          $avatarMainItem = imagecreatefrompng('http://media1.clubpenguin.com/avatar/paper/' . $avatarSize . '/' . $avatarItem . '.png');
+          
+          imagecopy($avatarMain, $avatarMainItem, 0, 0, 0, 0, $avatarSize, $avatarSize);
+        }
       }
     }
     
